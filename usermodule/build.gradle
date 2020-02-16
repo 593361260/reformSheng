@@ -1,0 +1,49 @@
+if (isUserModule.toBoolean()) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        if (!isUserModule.toBoolean()) {
+            applicationId "org.kevin.usermodule"
+        }
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            if (isUserModule.toBoolean()) {//release
+                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+                java {
+                    exclude 'debug/**'
+                }
+            } else {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation project(path: ':baselibrary')
+    implementation "org.jetbrains.anko:anko-appcompat-v7-commons:$anko_version"
+
+}

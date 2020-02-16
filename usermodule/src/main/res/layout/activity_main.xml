@@ -17,15 +17,16 @@
         android:hint="请输入密码"
         android:textSize="12sp" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="登录" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="确认密码" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登录" />
 
 </LinearLayout>

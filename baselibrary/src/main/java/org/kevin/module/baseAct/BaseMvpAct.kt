@@ -2,8 +2,9 @@ package org.kevin.module.baseAct
 
 import org.kevin.module.presenter.BasePresenter
 import org.kevin.module.presenter.view.BaseView
+import javax.inject.Inject
 
-open class BaseMvpAct<T : BasePresenter<*>> : BaseActivity(), BaseView {
+open class BaseMvpAct<T : BasePresenter<*>>(layout: Int = 0) : BaseActivity(layout), BaseView {
     override fun showContent() {
 
     }
@@ -20,7 +21,7 @@ open class BaseMvpAct<T : BasePresenter<*>> : BaseActivity(), BaseView {
 
     }
 
-
+    @Inject
     lateinit var presenter: T
 
 }
