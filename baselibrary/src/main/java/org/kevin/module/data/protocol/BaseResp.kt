@@ -1,4 +1,4 @@
 package org.kevin.module.data.protocol
 
-class BaseResp<out T>(val status: Int, val message: String, val data: T) {
+class BaseResp<out T>(val code: Int, val msg: String, val data: T) {
 }

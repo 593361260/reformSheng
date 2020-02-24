@@ -1,2 +1,2 @@
-include ':app', ':baselibrary', ':usermodule'
+include ':app', ':baselibrary', ':usermodule', ':provider', ':calcbtc'
 rootProject.name='Kotlin'

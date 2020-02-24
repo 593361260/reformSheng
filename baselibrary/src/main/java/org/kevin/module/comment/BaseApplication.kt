@@ -1,4 +1,4 @@
-package org.kevin.module.Comment
+package org.kevin.module.comment
 
 import android.app.Application
 
