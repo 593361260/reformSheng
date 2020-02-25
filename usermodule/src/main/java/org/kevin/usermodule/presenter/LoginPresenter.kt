@@ -1,7 +1,10 @@
 package org.kevin.usermodule.presenter
 
+import org.kevin.module.data.protocol.BaseResp
+import org.kevin.module.ext.execute
 import org.kevin.module.presenter.BasePresenter
 import org.kevin.module.rx.BaseSubscriber
+import org.kevin.usermodule.data.model.JudeAccountData
 import org.kevin.usermodule.presenter.view.LoginView
 import org.kevin.usermodule.server.impl.UserServerImpl
 import rx.Observer
@@ -36,6 +39,15 @@ class LoginPresenter : BasePresenter<LoginView>() {
             .subscribeOn(Schedulers.io()).subscribe(object : BaseSubscriber<Any>() {
                 override fun onNext(t: Any) {
                     controlView.onLoginResult(true)
+                }
+            })
+    }
+
+    fun isRegister(areaCode: String, number: String) {
+        UserServerImpl().isRegister(areaCode, number)
+            .execute(object : BaseSubscriber<BaseResp<JudeAccountData>>() {
+                override fun onNext(t: BaseResp<JudeAccountData>) {
+                    controlView.isRegister(t.data)
                 }
             })
     }

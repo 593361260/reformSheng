@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
 import org.kevin.module.baseAct.BaseMvpAct
 import org.kevin.module.utils.PhoneUtil
+import org.kevin.usermodule.data.model.JudeAccountData
 import org.kevin.usermodule.presenter.LoginPresenter
 import org.kevin.usermodule.presenter.view.LoginView
 
@@ -36,16 +37,25 @@ class LoginActivity : BaseMvpAct<LoginPresenter>(R.layout.activity_login), Login
         presenter = LoginPresenter()
         presenter.controlView = this
         btnLogin.setOnClickListener {
-            presenter.getCode(
-                "CN",
-                etNumber.text.toString().trim(),
-                PhoneUtil.getInstance(this).imei
-            )
+            presenter.isRegister("CN", etNumber.text.toString().trim())
         }
     }
 
     override fun onLoginResult(result: Boolean) {
         toast("登录成功")
+    }
+
+    override fun isRegister(result: JudeAccountData) {
+        if (result.getIs_exist() == 1) {
+            toast("已经注册, 请登录")
+            presenter.getCode(
+                "CN",
+                etNumber.text.toString().trim(),
+                PhoneUtil.getInstance(this).imei
+            )
+        } else {
+            toast("注册")
+        }
     }
 
 }
