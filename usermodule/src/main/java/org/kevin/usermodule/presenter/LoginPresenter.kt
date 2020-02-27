@@ -10,11 +10,14 @@ import org.kevin.usermodule.server.impl.UserServerImpl
 import rx.Observer
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import javax.inject.Inject
 
-class LoginPresenter : BasePresenter<LoginView>() {
+class LoginPresenter @Inject constructor() : BasePresenter<LoginView>() {
+    @Inject
+    lateinit var userService: UserServerImpl
 
     fun login(name: String, verifyCode: String, pwd: String) {
-        UserServerImpl().register(name, verifyCode, pwd).observeOn(AndroidSchedulers.mainThread())
+        userService.register(name, verifyCode, pwd).observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io()).subscribe(object : Observer<Boolean> {
                 override fun onError(e: Throwable?) {
 
@@ -34,7 +37,7 @@ class LoginPresenter : BasePresenter<LoginView>() {
         number: String,
         imei: String
     ) {
-        UserServerImpl().getVerifyCode(areaCode, number, imei)
+        userService.getVerifyCode(areaCode, number, imei)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io()).subscribe(object : BaseSubscriber<Any>() {
                 override fun onNext(t: Any) {
@@ -44,7 +47,7 @@ class LoginPresenter : BasePresenter<LoginView>() {
     }
 
     fun isRegister(areaCode: String, number: String) {
-        UserServerImpl().isRegister(areaCode, number)
+        userService.isRegister(areaCode, number)
             .execute(object : BaseSubscriber<BaseResp<JudeAccountData>>() {
                 override fun onNext(t: BaseResp<JudeAccountData>) {
                     controlView.isRegister(t.data)

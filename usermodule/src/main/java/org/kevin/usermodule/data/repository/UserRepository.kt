@@ -5,8 +5,9 @@ import org.kevin.module.data.protocol.BaseResp
 import org.kevin.usermodule.data.api.UserApi
 import org.kevin.usermodule.data.model.JudeAccountData
 import rx.Observable
+import javax.inject.Inject
 
-class UserRepository {
+class UserRepository @Inject constructor(){
     fun getCode(areaCode: String, number: String, imei: String): Observable<BaseResp<Any>> {
         return RetrofitFactory.instances.create(UserApi::class.java).getCode(areaCode, number, imei)
     }

@@ -1,13 +1,14 @@
 package org.kevin.usermodule.common
 
 import android.app.Application
+import org.kevin.module.comment.BaseApplication
 import skin.support.SkinCompatManager
 import skin.support.app.SkinAppCompatViewInflater
 import skin.support.app.SkinCardViewInflater
 import skin.support.constraint.app.SkinConstraintViewInflater
 import skin.support.design.app.SkinMaterialViewInflater
 
-class App : Application() {
+class App : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()

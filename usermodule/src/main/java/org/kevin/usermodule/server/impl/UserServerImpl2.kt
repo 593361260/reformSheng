@@ -7,7 +7,7 @@ import org.kevin.usermodule.server.UserServer
 import rx.Observable
 import javax.inject.Inject
 
-class UserServerImpl @Inject constructor() : UserServer {
+class UserServerImpl2 @Inject constructor() : UserServer {
     @Inject
     lateinit var userRepository: UserRepository
 

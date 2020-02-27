@@ -1,12 +1,19 @@
 package org.kevin.module.comment
 
 import android.app.Application
+import org.kevin.module.injection.conponent.AppComponent
+import org.kevin.module.injection.conponent.DaggerAppComponent
+import javax.inject.Inject
 
-class BaseApplication: Application() {
-
+open class BaseApplication : Application() {
+    lateinit var appComponent: AppComponent
     override fun onCreate() {
         super.onCreate()
-
-
+        initAppInjection()
     }
+
+    private fun initAppInjection() {
+        appComponent = DaggerAppComponent.builder().build()
+    }
+
 }

@@ -5,6 +5,7 @@ if (isUserModule.toBoolean()) {
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -51,4 +52,6 @@ dependencies {
     implementation "skin.support:skin-support-design:$skin_version"
     implementation "skin.support:skin-support-cardview:$skin_version"
     implementation "skin.support:skin-support-constraint-layout:$skin_version"
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
 }
