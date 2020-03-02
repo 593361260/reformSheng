@@ -46,6 +46,6 @@ dependencies {
     implementation "skin.support:skin-support-design:$skin_version"
     implementation "skin.support:skin-support-cardview:$skin_version"
     implementation "skin.support:skin-support-constraint-layout:$skin_version"
-
-
+    implementation "com.trello:rxlifecycle-kotlin:$rxlifecycle_version"
+    implementation "com.trello:rxlifecycle-components:$rxlifecycle_version"
 }

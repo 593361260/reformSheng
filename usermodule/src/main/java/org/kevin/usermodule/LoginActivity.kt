@@ -16,13 +16,14 @@ import org.kevin.usermodule.injection.module.RegisterModule
 import org.kevin.usermodule.presenter.LoginPresenter
 import org.kevin.usermodule.presenter.view.LoginView
 
-class LoginActivity : BaseMvpAct<LoginPresenter>(R.layout.activity_login), LoginView {
+class LoginActivity : BaseMvpAct<LoginPresenter>(), LoginView {
     companion object {
         private const val PERMISSION_PHONE_STATE = 0x00
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(
                     this,
@@ -54,11 +55,11 @@ class LoginActivity : BaseMvpAct<LoginPresenter>(R.layout.activity_login), Login
     override fun isRegister(result: JudeAccountData) {
         if (result.getIs_exist() == 1) {
             toast("已经注册, 请登录")
-//            presenter.getCode(
-//                "CN",
-//                etNumber.text.toString().trim(),
-//                PhoneUtil.getInstance(this).imei
-//            )
+            presenter.getCode(
+                "CN",
+                etNumber.text.toString().trim(),
+                PhoneUtil.getInstance(this).imei
+            )
         } else {
             toast("注册")
         }
