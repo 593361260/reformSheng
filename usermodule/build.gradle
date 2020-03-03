@@ -54,6 +54,6 @@ dependencies {
     implementation "skin.support:skin-support-constraint-layout:$skin_version"
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
-
-
+    implementation "com.trello:rxlifecycle-kotlin:$rxlifecycle_version"
+    implementation "com.trello:rxlifecycle-components:$rxlifecycle_version"
 }

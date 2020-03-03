@@ -14,7 +14,7 @@ open class BaseMvpAct<T : BasePresenter<*>>(layout: Int = 0) : BaseActivity(layo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initActivityInjection()
-        bindToLifecycle<>()
+//        bindToLifecycle<>()
     }
 
     private fun initActivityInjection() {
