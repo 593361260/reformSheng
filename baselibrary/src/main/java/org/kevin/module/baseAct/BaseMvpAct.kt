@@ -1,10 +1,11 @@
 package org.kevin.module.baseAct
 
 import android.os.Bundle
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity
 import org.kevin.module.comment.BaseApplication
 import org.kevin.module.injection.conponent.ActivityComponent
 import org.kevin.module.injection.conponent.DaggerActivityComponent
+import org.kevin.module.injection.module.ActivityModule
+import org.kevin.module.injection.module.LifecycleProviderModule
 import org.kevin.module.presenter.BasePresenter
 import org.kevin.module.presenter.view.BaseView
 import javax.inject.Inject
@@ -14,12 +15,13 @@ open class BaseMvpAct<T : BasePresenter<*>>(layout: Int = 0) : BaseActivity(layo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initActivityInjection()
-//        bindToLifecycle<>()
     }
 
     private fun initActivityInjection() {
         activityComponent = DaggerActivityComponent.builder()
-            .appComponent((application as BaseApplication).appComponent).build()
+            .appComponent((application as BaseApplication).appComponent)
+            .activityModule(ActivityModule(this))
+            .lifecycleProviderModule(LifecycleProviderModule(this)).build()
     }
 
     override fun showContent() {

@@ -1,7 +1,6 @@
 package org.kevin.module.ext
 
 import com.trello.rxlifecycle.LifecycleProvider
-import com.trello.rxlifecycle.kotlin.bindToLifecycle
 import rx.Observable
 import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers

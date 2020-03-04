@@ -12,7 +12,6 @@ import org.kevin.module.baseAct.BaseMvpAct
 import org.kevin.module.utils.PhoneUtil
 import org.kevin.usermodule.data.model.JudeAccountData
 import org.kevin.usermodule.injection.component.DaggerUserComponent
-import org.kevin.usermodule.injection.module.RegisterModule
 import org.kevin.usermodule.presenter.LoginPresenter
 import org.kevin.usermodule.presenter.view.LoginView
 

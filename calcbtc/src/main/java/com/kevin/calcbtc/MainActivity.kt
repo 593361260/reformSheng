@@ -13,10 +13,11 @@ import org.kevin.module.baseAct.BaseMvpAct
  *
  *列出盈利一个点和2个点,
  */
-class MainActivity : BaseMvpAct<CalcBtcChangePresenter>(R.layout.activity_main), CalcView {
+class MainActivity : BaseMvpAct<CalcBtcChangePresenter>(), CalcView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         presenter = CalcBtcChangePresenter()
         presenter.controlView = this
         etOriginal.addTextChangedListener(object : TextWatcher {

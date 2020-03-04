@@ -3,6 +3,7 @@ package org.kevin.module.comment
 import android.app.Application
 import org.kevin.module.injection.conponent.AppComponent
 import org.kevin.module.injection.conponent.DaggerAppComponent
+import org.kevin.module.injection.module.AppModule
 import javax.inject.Inject
 
 open class BaseApplication : Application() {
@@ -13,7 +14,7 @@ open class BaseApplication : Application() {
     }
 
     private fun initAppInjection() {
-        appComponent = DaggerAppComponent.builder().build()
+        appComponent = DaggerAppComponent.builder().appModule(AppModule(this)).build()
     }
 
 }

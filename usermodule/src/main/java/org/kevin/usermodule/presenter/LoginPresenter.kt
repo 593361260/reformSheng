@@ -1,6 +1,5 @@
 package org.kevin.usermodule.presenter
 
-import com.trello.rxlifecycle.LifecycleProvider
 import org.kevin.module.data.protocol.BaseResp
 import org.kevin.module.ext.execute
 import org.kevin.module.presenter.BasePresenter
@@ -16,7 +15,6 @@ import javax.inject.Inject
 class LoginPresenter @Inject constructor() : BasePresenter<LoginView>() {
     @Inject
     lateinit var userService: UserServerImpl
-    lateinit var provider: LifecycleProvider<*>
     fun login(name: String, verifyCode: String, pwd: String) {
         userService.register(name, verifyCode, pwd).observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io()).subscribe(object : Observer<Boolean> {
