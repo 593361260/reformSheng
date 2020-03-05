@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
 import org.kevin.module.baseAct.BaseMvpAct
+import org.kevin.module.comment.AppManager
 import org.kevin.module.utils.PhoneUtil
 import org.kevin.usermodule.data.model.JudeAccountData
 import org.kevin.usermodule.injection.component.DaggerUserComponent
@@ -61,6 +62,17 @@ class LoginActivity : BaseMvpAct<LoginPresenter>(), LoginView {
             )
         } else {
             toast("注册")
+        }
+    }
+
+    private var clickTime = 0L
+    override fun onBackPressed() {
+        val currentTime = System.currentTimeMillis()
+        if (currentTime - clickTime > 2000) {
+            toast("再点一次关闭")
+            clickTime = currentTime
+        } else {
+            AppManager.instances.exitProcess(this)
         }
     }
 

@@ -23,6 +23,10 @@ class AppManager private constructor() {
         activityStack.remove(activity)
     }
 
+    fun topActivity(): Activity {
+        return activityStack.lastElement()
+    }
+
     fun finishAllActivity() {
         activityStack.forEach {
             it.finish()
